@@ -1,4 +1,5 @@
 1. installing K3s
+   '''
    sudo apt install curl wget git
    curl -sfL https://get.k3s.io | sh -
    sudo k3s kubectl get nodes
@@ -10,6 +11,7 @@
    export KUBECONFIG=~/.kube/config
    echo 'export KUBECONFIG=~/.kube/config' >> ~/.bashrc
    source ~/.bashrc
+   '''
 
 2.Creating the DB
    kubectl create namespace db
