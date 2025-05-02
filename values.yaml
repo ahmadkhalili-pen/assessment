@@ -1,0 +1,21 @@
+auth:
+  rootPassword: ahmad@123
+  database: appdb
+  replicationPassword: Replic@tionPass
+
+architecture: replication
+primary:
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClass: "local-path"
+secondary:
+  replicaCount: 2
+  persistence:
+    enabled: true
+    size: 5Gi
+    storageClass: "local-path"
+
+persistence:
+  enabled: true
+

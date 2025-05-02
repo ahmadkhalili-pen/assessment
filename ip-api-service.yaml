@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ip-api
+  namespace: web
+spec:
+  type: LoadBalancer
+  selector:
+    app: ip-api
+  ports:
+    - port: 8077
+      targetPort: 5000
+

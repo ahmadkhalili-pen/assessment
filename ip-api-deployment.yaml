@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ip-api
+  namespace: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ip-api
+  template:
+    metadata:
+      labels:
+        app: ip-api
+    spec:
+      containers:
+        - name: ip-api
+          image: ip-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: "mysqlcluster-primary.db.svc.cluster.local"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-secret
+                  key: db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-secret
+                  key: db-password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: api-db-secret
+                  key: db-name
+
