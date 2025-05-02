@@ -50,3 +50,14 @@
    sudo docker save ip-api:latest -o ip-api.tar
    sudo ctr -n k8s.io images import ip-api.tar
    sudo ctr -n k8s.io images list | grep ip-api
+
+
+
+test the api
+curl -X POST http://18.208.201.146:30080/log-ip
+validtion of mysql replica:
+kubectl exec -it -n db mysqlcluster-secondary-0 -- bash
+mysql -uroot -p
+ahmad@123
+use appdb;
+select * from request_log;
